@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>paths13 - Make a Github Pages blog with Pelican</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda"/>
+        <link rel="stylesheet" type="text/css" href="https://paths13.github.io//css/custom.css"/>
+        <link href="https://paths13.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="paths13 Atom Feed"/>
+
+<meta name="description" content="How to Make a Github Pages blog with Pelican" />
+<meta name="tags" content="python" />
+</head>
+<body>
+<a href="https://paths13.github.io/" class="github-corner" aria-label="View source on GitHub">
+    <svg width="80" height="80" viewBox="0 0 250 250"
+         style="fill:#8B8B7A; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+<style>.github-corner:hover .octo-arm {
+    animation: octocat-wave 560ms ease-in-out
+}
+@keyframes octocat-wave {
+    0%, 100% {
+        transform: rotate(0)
+    }
+    20%, 60% {
+        transform: rotate(-25deg)
+    }
+    40%, 80% {
+        transform: rotate(10deg)
+    }
+}
+@media (max-width: 500px) {
+    .github-corner:hover .octo-arm {
+        animation: none
+    }
+
+    .github-corner .octo-arm {
+        animation: octocat-wave 560ms ease-in-out
+    }
+}</style><div id="container">
+    <header>
+        <h1><a href="https://paths13.github.io/">paths13</a></h1>
+            <ul class="social-media">
+                    <li><a href="https://x.com/Scandii13"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+                    <li><a href="https://paths13.github.io/"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a></li>
+                    <li><a href="https://paths13.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"><i class="fa fa-rss fa-lg" aria-hidden="true"></i></a></li>
+            </ul>
+        <p><em>Journal of Data Mining</em></p>
+    </header>
+    <nav>
+        <ul>
+                    <li><a  class="active" href="https://paths13.github.io/category/python.html">Python</a></li>
+                    <li><a href="https://paths13.github.io/pages/about.html">About</a></li>
+        </ul>
+    </nav>
+<main>
+    <article>
+        <h1>Make a Github Pages blog with Pelican</h1>
+        
+        <aside>
+            <ul>
+                <li>
+                    <time datetime="2024-11-24 00:00:00-07:00">Nov 24, 2024</time>
+                </li>
+                <li>
+                    Categories:
+                    <a href="https://paths13.github.io/category/python.html"><em>Python</em></a>
+                </li>
+                <li>
+                    Tags:
+                    <a href="https://paths13.github.io/tag/python.html"><em>#python</em></a>
+                </li>
+            </ul>
+        </aside>
+        <h2>Install Pelican</h2>
+<p>In project’s folder:</p>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">pelican</span>
+</code></pre></div>
+
+<p>Create a new folder for your project and open a console in it. Let's create default Simple theme:</p>
+<div class="highlight"><pre><span></span><code><span class="n">pelican</span><span class="o">-</span><span class="n">quickstart</span>
+</code></pre></div>
+
+<p>During the pelican-quickstart process you need to say "yes":</p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="n">Do</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">want</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">upload</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">website</span><span class="w"> </span><span class="n">using</span><span class="w"> </span><span class="n">Github</span><span class="w"> </span><span class="n">Pages</span><span class="err">?</span><span class="w"> </span><span class="n">Say</span><span class="w"> </span><span class="err">“</span><span class="n">y</span><span class="err">”</span>
+
+<span class="w"> </span><span class="n">Do</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">want</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">automate</span><span class="w"> </span><span class="n">site</span><span class="w"> </span><span class="n">generation</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">publication</span><span class="err">?</span><span class="w"> </span><span class="n">Say</span><span class="w"> </span><span class="s2">&quot;y&quot;</span>
+</code></pre></div>
+
+<p>If you answered “yes” to second question, a tasks.py and Makefile will be generated in the root of your project. These files should be customized to fit your particular needs and usage patterns. Using them you can easily view and publish your site.</p>
+<h2>Theme installation</h2>
+<p>You can find pelican themes <a href="https://github.com/getpelican/pelican-themes">here</a>.Be carefull: not all themes are new and modern looking. </p>
+<p>Navigate to project's root folder and clone your theme. </p>
+<div class="highlight"><pre><span></span><code><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">aleylara</span><span class="o">/</span><span class="n">Peli</span><span class="o">-</span><span class="n">Kiera</span>
+</code></pre></div>
+
+<p>Install and verify the installation (stay in progect's root folder): </p>
+<div class="highlight"><pre><span></span><code><span class="n">pelican</span><span class="o">-</span><span class="n">themes</span> <span class="o">-</span><span class="n">i</span> <span class="n">Peli</span><span class="o">-</span><span class="n">Kiera</span>
+<span class="n">pelican</span><span class="o">-</span><span class="n">themes</span> <span class="o">--</span><span class="nb">list</span> <span class="err">–</span><span class="n">v</span>
+</code></pre></div>
+
+<p>The last command shows the path to your theme.</p>
+<h2>Configure blog to use new theme</h2>
+<p>For this, just open your pelicanconf.py available in your root folder and define the path to your new theme by adding the following statement at the end of pelicanconf.py file:</p>
+<div class="highlight"><pre><span></span><code><span class="n">THEME</span> <span class="o">=</span> <span class="s1">&#39;/usr/local/lib/python3.11/dist-packages/pelican/themes/Peli-Kiera&#39;</span>
+</code></pre></div>
+
+<p>If your theme have own pelicanconf.py you need extra steps.  In project's root folder find Makefile, open it in your favorit editor and put correct paths to theme's content, output folder and settings. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">BASEDIR</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">CURDIR</span><span class="p">)</span>
+<span class="n">INPUTDIR</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">BASEDIR</span><span class="p">)</span><span class="o">/</span><span class="n">your_theme</span><span class="o">/</span><span class="n">content</span>
+<span class="n">OUTPUTDIR</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">BASEDIR</span><span class="p">)</span><span class="o">/</span><span class="n">your_theme</span><span class="o">/</span><span class="n">output</span>
+<span class="n">CONFFILE</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">BASEDIR</span><span class="p">)</span><span class="o">/</span><span class="n">your_theme</span><span class="o">/</span><span class="n">pelicanconf</span><span class="o">.</span><span class="n">py</span>
+<span class="n">PUBLISHCONF</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">BASEDIR</span><span class="p">)</span><span class="o">/</span><span class="n">your_theme</span><span class="o">/</span><span class="n">publishconf</span><span class="o">.</span><span class="n">py</span>
+</code></pre></div>
+
+<p>Then in project's root folder open tasks.py and change values in variables:</p>
+<div class="highlight"><pre><span></span><code><span class="n">SETTINGS_FILE_BASE</span> <span class="o">=</span> <span class="s1">&#39;your_theme/docs/pelicanconf.py&#39;</span>
+<span class="o">...</span>
+<span class="s1">&#39;settings_publish&#39;</span><span class="p">:</span> <span class="s1">&#39;your_theme/docs/publishconf.py&#39;</span>
+</code></pre></div>
+
+<p>If you will have problems with rendering pages because of CACHE try open another page of site and then return to previous page again. IF you still have problems with CACHE edit pelicanconf.py in theme's folder: </p>
+<div class="highlight"><pre><span></span><code><span class="n">LOAD_CONTENT_CACHE</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">AUTORELOAD_IGNORE_CACHE</span> <span class="o">=</span> <span class="kc">True</span>
+</code></pre></div>
+
+<p>You can add default pagination count. You need put "0" here to show tags button on the main page.</p>
+<div class="highlight"><pre><span></span><code><span class="n">DEFAULT_PAGINATION</span> <span class="o">=</span> <span class="mi">0</span>
+</code></pre></div>
+
+<h2>Creating blog content in Markdown</h2>
+<p>In project's root folder navigate to content folder (create content folder if not exist). In content folder create folders: articles (for blog posts) and pages (for static pages). Install markdown and create files.md in both folders. </p>
+<p>A sample article header.</p>
+<div class="highlight"><pre><span></span><code><span class="n">Title</span><span class="p">:</span> <span class="n">Articles_title</span> 
+<span class="n">Date</span><span class="p">:</span> <span class="mi">2024</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">14</span>
+<span class="n">Tags</span><span class="p">:</span> <span class="n">python</span>
+<span class="n">Description</span><span class="p">:</span> <span class="n">The</span> <span class="n">Zen</span> <span class="n">of</span> <span class="n">Python</span>
+<span class="n">Category</span><span class="p">:</span> <span class="n">Python</span>
+</code></pre></div>
+
+<p>It's time to view our Simple Theme. Navigate to project's root folder and run:</p>
+<div class="highlight"><pre><span></span><code><span class="n">make</span> <span class="n">devserver</span>
+</code></pre></div>
+
+<p>This step create OUTPUT folder with site files in root of your project. This command also tell Pelican to watch for your modifications, instead of manually re-running it every time you want to see your changes. In Linux it simultaneously both auto-regenerate and serve the output at http://127.0.0.1:8000/ or http://localhost:8000 (depends on your theme settings).</p>
+<p>Go to http://127.0.0.1:8000 or http://localhost:8000/ in your browser to view your blog. If you want to stop development server run:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Ctrl</span><span class="o">+</span><span class="n">C</span>
+</code></pre></div>
+
+<p>When you are ready to deploy your site for production change SITEURL in theme's pelicanconf.py from: </p>
+<div class="highlight"><pre><span></span><code><span class="n">SITEURL</span> <span class="o">=</span> <span class="s2">&quot;http://localhost:8000&quot;</span>
+</code></pre></div>
+
+<p>to</p>
+<div class="highlight"><pre><span></span><code><span class="n">SITEURL</span> <span class="o">=</span> <span class="s2">&quot;https://your_site.github.io&quot;</span>
+</code></pre></div>
+
+<p>Stop development server and run it again:</p>
+<div class="highlight"><pre><span></span><code><span class="n">make</span> <span class="n">devserver</span>
+</code></pre></div>
+
+<h2>Push site on github</h2>
+<p>Create repository for your Github Pages on Github. Clone your site folder:</p>
+<div class="highlight"><pre><span></span><code><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">paths13</span><span class="o">/</span><span class="n">paths13</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">git</span>
+</code></pre></div>
+
+<p>In cloned folder:</p>
+<div class="highlight"><pre><span></span><code><span class="n">git</span> <span class="n">init</span> <span class="o">.</span>
+</code></pre></div>
+
+<p>You should see .git folder. </p>
+<div class="highlight"><pre><span></span><code><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">main</span>
+</code></pre></div>
+
+<p>Copy files in OUTPUT folder of your theme (in Flex-master folder) and paste it into cloned site folder from github.</p>
+<div class="highlight"><pre><span></span><code><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;initial commit&quot;</span>
+
+<span class="n">git</span> <span class="n">push</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">your_token</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">paths13</span><span class="o">/</span><span class="n">paths13</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">git</span> 
+</code></pre></div>
+
+<p>You are all done!</p>
+<p>Note! Since 2022 you need to receive token instead of login and password to push site on github.</p>
+    </article>
+    <section class="post-nav">
+        <div id="left-page">
+            <div id="left-link">
+            </div>
+        </div>
+        <div id="right-page">
+            <div id="right-link">
+            </div>
+        </div>
+    </section>
+    <div>
+    </div>
+</main>
+    <footer>
+        <h6>
+            Copyright &copy2024  &nbsp;&#8209;&nbsp; xpaths         </h6>
+    </footer>
+</div>
+</body>
+</html>
