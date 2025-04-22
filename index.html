@@ -4,15 +4,14 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>paths13</title>
+        <title>Xzone</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda"/>
-        <link rel="stylesheet" type="text/css" href="https://paths13.github.io//css/custom.css"/>
-        <link href="https://paths13.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="paths13 Atom Feed"/>
+        <link rel="stylesheet" type="text/css" href=".//css/custom.css"/>
 </head>
 <body>
-<a href="https://paths13.github.io/" class="github-corner" aria-label="View source on GitHub">
+<a href="https://github.com/paths13" class="github-corner" aria-label="View source on GitHub">
     <svg width="80" height="80" viewBox="0 0 250 250"
          style="fill:#8B8B7A; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
         <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
@@ -46,25 +45,115 @@
     }
 }</style><div id="container">
     <header>
-        <h1><a href="https://paths13.github.io/">paths13</a></h1>
+        <h1><a href="./">Xzone</a></h1>
             <ul class="social-media">
                     <li><a href="https://x.com/Scandii13"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-                    <li><a href="https://paths13.github.io/"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a></li>
-                    <li><a href="https://paths13.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"><i class="fa fa-rss fa-lg" aria-hidden="true"></i></a></li>
+                    <li><a href="https://github.com/paths13"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a></li>
             </ul>
-        <p><em>Journal of Data Mining</em></p>
+        <p><em></em></p>
     </header>
     <nav>
         <ul>
-                    <li><a href="https://paths13.github.io/category/python.html">Python</a></li>
-                    <li><a href="https://paths13.github.io/pages/about.html">About</a></li>
+                    <li><a href="./category/linux.html">Linux</a></li>
+                    <li><a href="./category/python.html">Python</a></li>
+                    <li><a href="./pages/about.html">About</a></li>
         </ul>
     </nav>
     <main>
         <section id="home">
             <ul>
                     <li>
-                        <h1><a href="https://paths13.github.io/customizing-pelican-theme-with-css.html" rel="bookmark"
+                        <h1><a href="./job-parser.html" rel="bookmark"
+                               title="Permalink to Job parser">Job parser</a></h1>
+                        <aside>
+                            <ul>
+                                <li>
+                                    <time datetime="2025-04-22 00:00:00-07:00">Apr 22, 2025</time>
+                                </li>
+                            </ul>
+                        </aside>
+                        <p>
+                            <p>Sometimes, you need to collect vacancy data for future use. Here's a parser for you.</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="c1">#</span>
+<span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://api.hh.ru/vacancies?text=editor&amp;area=1&quot;</span>
+<span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s1">&#39;page&#39;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">    </span>
+<span class="w">        </span><span class="s1">&#39;per_page&#39;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span>
+<span class="p">}</span>
+<span class="n">table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="n">vacancy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+<span class="n">company</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+<span class="k">while</span><span class="w"> </span><span class="n">url</span><span class="p">:</span>
+<span class="w">    </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="w"> </span><span class="o">==</span><span class="mi">200</span><span class="p">:</span>
+<span class="w">        </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="w">        </span><span class="n">first_dict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;items&#39;</span><span class="p">]</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">el</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">first_dict</span><span class="p">:</span>
+<span class="w">            </span><span class="n">comp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">el</span><span class="p">[</span><span class="s1">&#39;employer&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<span class="w">            </span><span class="n">vac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">el</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<span class="w">            </span><span class="n">company</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">comp</span><span class="p">)</span>
+<span class="w">            </span><span class="n">vacancy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vac</span><span class="p">)</span>
+<span class="w">        </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;page&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">        </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://api.hh.ru/vacancies?text=editor&amp;area=1&quot;</span>
+<span class="w">    </span><span class="k">else</span><span class="p">:</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;fake …</span></code></pre></div>
+                            <a href="./job-parser.html"><em>Read more...</em></a>
+                        </p>
+                    </li>
+                    <li>
+                        <h1><a href="./ssh-tunnel-for-bypassing-country-restrictions.html" rel="bookmark"
+                               title="Permalink to SSH Tunnel for Bypassing Country Restrictions">SSH Tunnel for Bypassing Country Restrictions</a></h1>
+                        <aside>
+                            <ul>
+                                <li>
+                                    <time datetime="2025-04-17 00:00:00-07:00">Apr 17, 2025</time>
+                                </li>
+                            </ul>
+                        </aside>
+                        <p>
+                            <p>Accessing content or apps that are blocked by your country can be a bit tricky. One of the best methods is to establish an SSH tunnel.</p>
+<h2>Set Up an SSH Tunnel</h2>
+<div class="highlight"><pre><span></span><code><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">D</span><span class="w"> </span><span class="mi">1337</span><span class="w"> </span><span class="o">-</span><span class="n">q</span><span class="w"> </span><span class="o">-</span><span class="n">C</span><span class="w"> </span><span class="o">-</span><span class="n">N</span><span class="w"> </span><span class="k">user</span><span class="nv">@domain</span>
+</code></pre></div>
+
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">D</span><span class="w"> </span><span class="mi">1337</span><span class="w"> </span><span class="o">-</span><span class="n">q</span><span class="w"> </span><span class="o">-</span><span class="n">C</span><span class="w"> </span><span class="o">-</span><span class="n">N</span><span class="w"> </span><span class="n">sshmax</span><span class="o">-</span><span class="n">vanda</span><span class="nv">@de1</span><span class="p">.</span><span class="n">sshmax</span><span class="p">.</span><span class="n">site</span>
+<span class="n">sshmax</span><span class="o">-</span><span class="n">vanda</span><span class="nv">@de1</span><span class="p">.</span><span class="n">sshmax</span><span class="p">.</span><span class="n">site</span><span class="err">&#39;</span><span class="n">s</span><span class="w"> </span><span class="nl">password</span><span class="p">:</span><span class="w"> </span><span class="n">XXXXXXXXX</span>
+</code></pre></div>
+
+<p>The authenticity of host 'de1.sshmax.site (94.131.111.32)' can't be established.
+ED25519 key fingerprint is SHA256:ZmBujYv5KzzsxgR71qzrLgSVWJuIlS7+mRQZHjeJf40.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no …</p>
+                            <a href="./ssh-tunnel-for-bypassing-country-restrictions.html"><em>Read more...</em></a>
+                        </p>
+                    </li>
+                    <li>
+                        <h1><a href="./stop-the-activity-of-the-ssh-virus.html" rel="bookmark"
+                               title="Permalink to Stop the activity of the SSH virus">Stop the activity of the SSH virus</a></h1>
+                        <aside>
+                            <ul>
+                                <li>
+                                    <time datetime="2025-04-17 00:00:00-07:00">Apr 17, 2025</time>
+                                </li>
+                            </ul>
+                        </aside>
+                        <p>
+                            <p>A Hacker’s Behavior Often Imitates a Connection Issue</p>
+<p>Sometimes, a hacker’s behavior can mimic problems with your internet connection. For example, your router might be working, all the indicator lights show that the internet is connected, but the speed is extremely slow and you can’t load any pages. Maybe your device loses connection several times a day. Occasionally, you might even notice the modem shutting down without any action on your part.</p>
+<p>Of course, the first thing most people do is call their internet provider. But in these cases, the response is usually the same:
+"We're providing …</p>
+                            <a href="./stop-the-activity-of-the-ssh-virus.html"><em>Read more...</em></a>
+                        </p>
+                    </li>
+                    <li>
+                        <h1><a href="./customizing-pelican-theme-with-css.html" rel="bookmark"
                                title="Permalink to Customizing Pelican theme with CSS">Customizing Pelican theme with CSS</a></h1>
                         <aside>
                             <ul>
@@ -81,11 +170,11 @@
 </li>
 <li>
 <p>Copy the theme's main.css project/content …</p></li></ol>
-                            <a href="https://paths13.github.io/customizing-pelican-theme-with-css.html"><em>Read more...</em></a>
+                            <a href="./customizing-pelican-theme-with-css.html"><em>Read more...</em></a>
                         </p>
                     </li>
                     <li>
-                        <h1><a href="https://paths13.github.io/make-a-github-pages-blog-with-pelican.html" rel="bookmark"
+                        <h1><a href="./make-a-github-pages-blog-with-pelican.html" rel="bookmark"
                                title="Permalink to Make a Github Pages blog with Pelican">Make a Github Pages blog with Pelican</a></h1>
                         <aside>
                             <ul>
@@ -96,22 +185,31 @@
                         </aside>
                         <p>
                             <h2>Install Pelican</h2>
-<p>In project’s folder:</p>
-<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">pelican</span>
+<p>In home folder:</p>
+<p>Assuming you have virtualenv installed, you can then open a new terminal session and create a new virtual environment for Pelican.</p>
+<div class="highlight"><pre><span></span><code>virtualenv ~/virtualenvs/pelican
+cd ~/virtualenvs/pelican
+source bin/activate
 </code></pre></div>
 
-<p>Create a new folder for your project and open a console in it. Let's create default Simple theme:</p>
+<p>In folder named "pelican":</p>
+<div class="highlight"><pre><span></span><code>python -m pip install pelican
+</code></pre></div>
+
+<p>Or, if you plan on using Markdown:</p>
+<div class="highlight"><pre><span></span><code><span class="n">python</span><span class="w"> </span><span class="o">-</span><span class="n">m</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="ss">&quot;pelican[markdown]&quot;</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>python -m pip install typogrify
+</code></pre></div>
+
+<p>Once Pelican has been installed, you can create a skeleton project via the pelican-quickstart command, which begins by asking some questions about your site:</p>
 <div class="highlight"><pre><span></span><code><span class="n">pelican</span><span class="o">-</span><span class="n">quickstart</span>
 </code></pre></div>
 
 <p>During the pelican-quickstart process you need to say "yes":</p>
-<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="n">Do</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">want</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">upload</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">website</span><span class="w"> </span><span class="n">using</span><span class="w"> </span><span class="n">Github</span><span class="w"> </span><span class="n">Pages</span><span class="err">?</span><span class="w"> </span><span class="n">Say</span><span class="w"> </span><span class="err">“</span><span class="n">y</span><span class="err">”</span>
-
-<span class="w"> </span><span class="n">Do</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">want</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">automate</span><span class="w"> </span><span class="n">site</span><span class="w"> </span><span class="n">generation</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">publication</span><span class="err">?</span><span class="w"> </span><span class="n">Say</span><span class="w"> </span><span class="s2">&quot;y&quot;</span>
-</code></pre></div>
-
-<p>If you answered “yes” to second question, a tasks.py and Makefile will be generated in the root of your project. These files should be customized to fit your particular needs and usage patterns. Using them you can easily …</p>
-                            <a href="https://paths13.github.io/make-a-github-pages-blog-with-pelican.html"><em>Read more...</em></a>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="n">Do</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">want …</span></code></pre></div>
+                            <a href="./make-a-github-pages-blog-with-pelican.html"><em>Read more...</em></a>
                         </p>
                     </li>
             </ul>
@@ -119,7 +217,7 @@
     </main>
     <footer>
         <h6>
-            Copyright &copy2024  &nbsp;&#8209;&nbsp; xpaths         </h6>
+            Copyright &copy2025  &nbsp;&#8209;&nbsp; xpaths         </h6>
     </footer>
 </div>
 </body>
